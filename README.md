@@ -17,8 +17,8 @@
 - Cucumber
 
 # Comandos 
-npx cypress open
-npx cypress open --config--file cypress-cucumber.json
+- npx cypress open
+- npx cypress open --config--file cypress-cucumber.json
 
 # Organização dos elementos 
 - PageObjects 
