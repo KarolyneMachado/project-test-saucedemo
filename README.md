@@ -11,4 +11,4 @@
 
 # Comandos 
 npx cypress open
-npx cypress open --config
+
