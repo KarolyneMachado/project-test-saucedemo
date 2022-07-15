@@ -1,35 +1,33 @@
 /// <reference types="cypress" />
+import Login from '../../support/pages/Login'
+import validation from '../../support/pages/Asserções'
 
 Given(/^que acesso o site$/, () => {
-	cy.visit('/');
+	Login.acessoPageLogin();
 });
 
 When(/^informar meus dados$/, () => {
-    cy.get('input[id="user-name"]').type('standard_user');
-    cy.get('input[id="password"]').type('secret_sauce');
+    Login.preencherUserPasswordCorrect();
 });
 
 When(/^clique login$/, () => {
-    cy.get('input[id="login-button"]').click();
+    Login.clickLogin();
 });
 
 Then(/^devo realizar login com sucesso$/, () => {
-    cy.get('.title').should('have.text', 'Products')
+    validation.validationPageProducts();
 });
 
 
 When(/^informar meu username incorreto$/, () => {
-    cy.get('input[id="user-name"]').type('standard_user');
-    cy.get('input[id="password"]').type('senha_invalida');
+   Login.preencherUsernameIncorreto();
 });
 
 Then(/^devo receber mensagem de dados inválidos$/, () => {
-	cy.get('[data-test="error"]').should('have.text', 
-        'Epic sadface: Username and password do not match any user in this service')
+	validation.validationMensagemErrorLogin();
 });
 
 
 When(/^informar minha senha incorreta$/, () => {
-    cy.get('input[id="user-name"]').type('standard_user');
-    cy.get('input[id="password"]').type('senha_invalida');
+    Login.preencherPasswordIncorreto();
 });

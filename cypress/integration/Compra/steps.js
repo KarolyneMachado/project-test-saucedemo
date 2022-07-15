@@ -1,35 +1,33 @@
 /// <reference types="cypress" />
+import Login from '../../support/pages/Login'
+import Validation from '../../support/pages/Asserções'
+import Compras from '../../support/pages/Compras'
 
 Given(/^que acesso o site$/, () => {
-    cy.visit('/');
-    cy.get('input[id="user-name"]').type('standard_user');
-    cy.get('input[id="password"]').type('secret_sauce');
-    cy.get('input[id="login-button"]').click();
-    cy.get('.title').should('have.text', 'Products')
+    Login.acessoPageLogin();
+    Login.preencherUserPasswordCorrect();
+    Login.clickLogin();
+    Validation.validationPageProducts();
 });
 
 
 Then(/^adicione o produto ao carrinho$/, () => {
-	cy.get('[data-test="add-to-cart-sauce-labs-backpack"]').click();
-    cy.get('[data-test="remove-sauce-labs-backpack"]').should('have.text', 'Remove')
-    cy.get('.shopping_cart_link').click();
-    cy.get('.title').should('have.text', 'Your Cart');
-    cy.get('[data-test="checkout"]').click();
+    Compras.addToCart();
+    Compras.clickCart();
+    Validation.validationPageYourCart();
+    Compras.clickCheckout();
 });
 
 When(/^preencher os dados de endereço$/, () => {
-    cy.get('.title').should('have.text', 'Checkout: Your Information');
-    cy.get('[data-test="firstName"]').type('FirstName Teste');
-    cy.get('[data-test="lastName"]').type('LastName Teste')
-    cy.get('[data-test="postalCode"]').type(12345678);
-    cy.get('[data-test="continue"]').click();
+    Compras.preencherAddressDelivery();
+    
 });
 
 When(/^clicar em finish$/, () => {
-	cy.get('.title').should('have.text', 'Checkout: Overview');
-    cy.get('[data-test="finish"]').click();
+	Validation.validationPageOverview();
+    Compras.clickFinish();
 });
 
 Then(/^devo realizar a compra com sucesso$/, () => {
-	cy.get('.title').should('have.text', 'Checkout: Complete!');
+	Validation.validationPageComplete();
 });
