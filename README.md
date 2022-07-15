@@ -2,7 +2,7 @@
 - Login no site Saucedemo 
 - Realização de compra de um produto 
 
-# Instações 
+# Instalações 
 
 - Node 
 - Cypress
