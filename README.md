@@ -1,3 +1,3 @@
-# Project automated Cypress with Cucumber 
+# Project automated with Cypress and Cucumber
 - Login no site Saucedemo 
 - Realização de compra de um produto 
