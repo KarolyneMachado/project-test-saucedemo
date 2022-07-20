@@ -5,7 +5,9 @@
 
 
 # Saucedemo 
-- Login no site Saucedemo 
+- Login com username inválido
+- Login com password inválid
+- Login com sucesso
 - Realização de compra de um produto
 
 
