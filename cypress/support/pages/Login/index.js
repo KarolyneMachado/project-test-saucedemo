@@ -1,3 +1,12 @@
+beforeEach(() => {
+    cy.window().then((win) => {
+        win.caches.keys().then((cacheNames) => {
+            cacheNames.forEach((cacheName) => {
+                win.caches.delete(cacheName);
+            });
+        });
+    });
+});
 class Login {
 
     acessoPageLogin() {
