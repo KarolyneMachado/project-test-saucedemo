@@ -9,5 +9,3 @@ Scenario: Compra de um produto
     When preencher os dados de endereço
     And clicar em finish
     Then devo realizar a compra com sucesso
-
-

@@ -20,5 +20,3 @@ Scenario: Realizar login com password incorreta
     When informar minha senha incorreta
     And clique login
     Then devo receber mensagem de dados inválidos
-
-
